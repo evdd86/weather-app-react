@@ -21,12 +21,15 @@ export default function SearchForm(props) {
     const apiKey = "5105e9ba47cefb06b8ba8c75ae83f74e";
     let unit = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
-    axios.get(apiUrl).then(showWeather, function (error) {
-      alert(`Little error.
+    axios.get(`${apiUrl}`).then(showWeather, function (error) {
+      console.log(error);
+      alert(
+        `Little error.
         1. Did you fill in a city?
         2. Is the city spelled correctly?
         Still not working ?
-        3. Try going to https://www.google.com/search?q=weather+${city}`);
+        3. Try going to https://www.google.com/search?q=weather+${city}`
+      );
     });
   }
 
@@ -50,6 +53,20 @@ export default function SearchForm(props) {
     console.log(response);
   }
 
+  function handleClickLocation(event) {
+    event.preventDefault();
+    function showGeolocation(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      const apiKey = "5105e9ba47cefb06b8ba8c75ae83f74e";
+      const unit = "metric";
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
+      axios.get(apiUrl).then(showWeather);
+    }
+
+    navigator.geolocation.getCurrentPosition(showGeolocation);
+  }
+
   if (weatherData.ready) {
     return (
       <div className="SearchForm">
@@ -66,11 +83,21 @@ export default function SearchForm(props) {
           <input
             type="text"
             className="form-control"
-            placeholder="Enter a city"
+            placeholder="Search a city or use your location"
             aria-label="Search"
             aria-describedby="basic-addon1"
+            autoComplete="off"
             onChange={handleCityChange}
           ></input>
+          <div className="input-group-append">
+            <button
+              className="btn btn-dark"
+              type="button"
+              onClick={handleClickLocation}
+            >
+              Location
+            </button>
+          </div>
         </div>
         <div>
           <Current data={weatherData} />
