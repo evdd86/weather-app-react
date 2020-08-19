@@ -1,6 +1,12 @@
 import React from "react";
-import "./CurrentWeather.css";
+import SearchForm from "./SearchForm/SearchForm.js";
 
-export default function CurrentWeather() {
-  return "hello world";
+function CurrentWeather(props) {
+  return (
+    <div className="CurrentWeather">
+      It is {props.data.temp} in {props.data.city};
+    </div>
+  );
 }
+
+export default CurrentWeather;
