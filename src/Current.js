@@ -1,4 +1,5 @@
 import React from "react";
+import "./Current.css";
 
 export default function Current(props) {
   return (
