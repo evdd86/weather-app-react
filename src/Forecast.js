@@ -4,7 +4,7 @@ import ForecastOutput from "./ForecastOutput.js";
 import "./Forecast.css";
 
 export default function Forecast(props) {
-  const [ForecastData, setForecastData] = useState({ ready: false });
+  const [forecastData, setForecastData] = useState({ ready: false });
 
   function searchForecast() {
     const apiKey = "5105e9ba47cefb06b8ba8c75ae83f74e";
@@ -21,14 +21,18 @@ export default function Forecast(props) {
     });
   }
 
-  if (ForecastData.ready) {
+  if (
+    forecastData.ready &&
+    props.lat === forecastData.info.lat &&
+    props.lon === forecastData.info.lon
+  ) {
     return (
       <div className="Forecast">
-        <ForecastOutput output={ForecastData.info.daily[1]} />
-        <ForecastOutput output={ForecastData.info.daily[2]} />
-        <ForecastOutput output={ForecastData.info.daily[3]} />
-        <ForecastOutput output={ForecastData.info.daily[4]} />
-        <ForecastOutput output={ForecastData.info.daily[5]} />
+        <ForecastOutput output={forecastData.info.daily[1]} />
+        <ForecastOutput output={forecastData.info.daily[2]} />
+        <ForecastOutput output={forecastData.info.daily[3]} />
+        <ForecastOutput output={forecastData.info.daily[4]} />
+        <ForecastOutput output={forecastData.info.daily[5]} />
       </div>
     );
   } else {
