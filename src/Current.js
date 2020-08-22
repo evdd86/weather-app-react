@@ -41,7 +41,7 @@ export default function Current(props) {
           </div>
         </div>
         <div className="col-5 col-right">
-          <div className="flex-row conditions">Current conditions:</div>
+          <div className="flex-row conditions">Currently</div>
           <div className="flex-row icon justify-content-center">
             {showForecastIcon()}
           </div>

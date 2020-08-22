@@ -38,6 +38,7 @@
   font-size: 14px;
   color: green;
   text-align: right;
+  text-transform: uppercase;
 }
 .Current .icon {
   display: inline;
@@ -60,6 +61,7 @@
 }
 .Current .time {
   font-size: 14px;
+  font-style: italic;
   color: green;
   text-align: right;
 }
