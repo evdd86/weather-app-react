@@ -1,0 +1,13 @@
+.ForecastOutput {
+  font-size: 16px;
+}
+
+.ForecastOutput .icon {
+  width: 70px;
+}
+
+ul {
+  list-style: none;
+  padding: 5px;
+  margin: 0px;
+}

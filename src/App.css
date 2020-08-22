@@ -1,0 +1,12 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  max-width: max-content;
+  margin: 15px auto;
+
+  background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);
+}
+
+.App .container {
+  padding: 10px;
+}
