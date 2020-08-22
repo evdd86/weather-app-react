@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import FormattedDate from "./FormattedDate";
 import FormattedTime from "./FormattedTime";
+import CurrentBackground from "./CurrentBackground";
 import "./Current.css";
 
 export default function Current(props) {
@@ -22,7 +23,12 @@ export default function Current(props) {
   return (
     <div className="Current">
       <div className="d-flex flex-row border border-dark">
-        <div className="col-7 col-left">
+        <div
+          className="col-7 col-left"
+          style={{
+            backgroundImage: <CurrentBackground code={props.data.icon} />,
+          }}
+        >
           <div className="flex-row city">{props.data.city}</div>
           <div className="flex-row date">
             <FormattedDate date={props.data.date} />

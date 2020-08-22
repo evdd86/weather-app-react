@@ -48,6 +48,7 @@ export default function SearchForm(props) {
       humidity: response.data.main.humidity,
       windspeed: response.data.wind.speed,
       cloudiness: response.data.clouds.all,
+      icon: response.data.weather[0].icon,
       iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
     console.log(response);
