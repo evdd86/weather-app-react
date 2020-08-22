@@ -1,0 +1,65 @@
+.Current .col-7 {
+  padding: 5px;
+}
+.Current .col-5 {
+  padding: 5px;
+}
+.Current .col-left {
+  background-color: white;
+}
+
+.Current .city {
+  font-size: 25px;
+  color: green;
+  text-align: left;
+  text-transform: uppercase;
+}
+.Current .date {
+  font-size: 14px;
+  color: green;
+  text-align: left;
+}
+.Current .temp {
+  font-size: 80px;
+  color: green;
+  text-align: right;
+}
+.Current .feel {
+  font-size: 14px;
+  color: green;
+  text-align: right;
+}
+.Current .tempminmax {
+  font-size: 14px;
+  color: green;
+  text-align: right;
+}
+.Current .conditions {
+  font-size: 14px;
+  color: green;
+  text-align: right;
+}
+.Current .icon {
+  display: inline;
+}
+.Current .description {
+  font-size: 14px;
+  color: green;
+  text-align: right;
+  text-transform: capitalize;
+}
+.Current .windspeed {
+  font-size: 14px;
+  color: green;
+  text-align: right;
+}
+.Current .humidity {
+  font-size: 14px;
+  color: green;
+  text-align: right;
+}
+.Current .time {
+  font-size: 14px;
+  color: green;
+  text-align: right;
+}
