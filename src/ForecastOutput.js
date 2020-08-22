@@ -42,13 +42,16 @@ export default function ForecastOutput(props) {
         <li>{showForecastDay()}</li>
         <li>{showForecastIcon()}</li>
         <li>
-          <FontAwesomeIcon icon={faArrowCircleDown} /> {showForecastMinTemp()}°
+          <FontAwesomeIcon icon={faArrowCircleDown} color="green" />{" "}
+          {showForecastMinTemp()}°
         </li>
         <li>
-          <FontAwesomeIcon icon={faArrowCircleUp} /> {showForecastMaxTemp()}°
+          <FontAwesomeIcon icon={faArrowCircleUp} color="green" />{" "}
+          {showForecastMaxTemp()}°
         </li>
         <li>
-          <FontAwesomeIcon icon={faTint} /> {showForecastHumidity()}%
+          <FontAwesomeIcon icon={faTint} color="green" />{" "}
+          {showForecastHumidity()}%
         </li>
       </ul>
     </div>
