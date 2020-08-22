@@ -8,8 +8,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import FormattedDate from "./FormattedDate";
 import FormattedTime from "./FormattedTime";
-import CurrentBackground from "./CurrentBackground";
 import "./Current.css";
+
+import CloudsNightImage from "./CloudsNight.jpg";
+import { Container } from "react-bootstrap";
 
 export default function Current(props) {
   function showForecastIcon() {
@@ -26,7 +28,8 @@ export default function Current(props) {
         <div
           className="col-7 col-left"
           style={{
-            backgroundImage: <CurrentBackground code={props.data.icon} />,
+            backgroundImage: `url(${CloudsNightImage})`,
+            backgroundSize: "contain",
           }}
         >
           <div className="flex-row city">{props.data.city}</div>

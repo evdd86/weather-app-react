@@ -3,9 +3,7 @@
 }
 .Current .col-5 {
   padding: 5px;
-}
-.Current .col-left {
-  background-color: white;
+  background-color: transparent;
 }
 
 .Current .city {
