@@ -1,4 +1,10 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowCircleDown,
+  faArrowCircleUp,
+  faTint,
+} from "@fortawesome/free-solid-svg-icons";
 import "./ForecastOutput.css";
 
 export default function ForecastOutput(props) {
@@ -32,11 +38,19 @@ export default function ForecastOutput(props) {
 
   return (
     <div className="ForecastOutput">
-      {showForecastDay()}
-      {showForecastIcon()}
-      {showForecastMinTemp()}
-      {showForecastMaxTemp()}
-      {showForecastHumidity()}
+      <ul>
+        <li>{showForecastDay()}</li>
+        <li>{showForecastIcon()}</li>
+        <li>
+          <FontAwesomeIcon icon={faArrowCircleDown} /> {showForecastMinTemp()}°
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faArrowCircleUp} /> {showForecastMaxTemp()}°
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faTint} /> {showForecastHumidity()}%
+        </li>
+      </ul>
     </div>
   );
 }
