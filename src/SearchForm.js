@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearchLocation,
+  faMapMarkerAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import Current from "./Current.js";
 import Forecast from "./Forecast.js";
 import axios from "axios";
@@ -6,6 +11,7 @@ import "./SearchForm.css";
 
 export default function SearchForm(props) {
   const [city, setCity] = useState(props.defaultCity);
+  const [unit, setUnit] = useState(props.defaultUnit);
   const [weatherData, setWeatherData] = useState({ ready: false });
 
   function handleCityChange(event) {
@@ -22,14 +28,14 @@ export default function SearchForm(props) {
     let unit = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
     axios.get(`${apiUrl}`).then(showWeather, function (error) {
-      console.log(error);
-      alert(
-        `Little error.
-        1. Did you fill in a city?
-        2. Is the city spelled correctly?
-        Still not working ?
-        3. Try going to https://www.google.com/search?q=weather+${city}`
-      );
+      if (city.value === undefined) {
+        alert(`Error.
+      Did you fill in a city?
+         No: Please do :-) 
+         Yes: Is the city spelled correctly?
+            No: Try again with the correct spelling.
+            Yes: Try your luck on https://www.google.com/search?q=weather+${city}`);
+      }
     });
   }
 
@@ -68,41 +74,61 @@ export default function SearchForm(props) {
     navigator.geolocation.getCurrentPosition(showGeolocation);
   }
 
+  function showFahrenheit(event) {
+    event.preventDefault();
+    setUnit("°F");
+  }
+
+  function showCelcius(event) {
+    event.preventDefault();
+    setUnit("°C");
+  }
+
   if (weatherData.ready) {
     return (
       <div className="SearchForm">
-        <div className="input-group mb-3">
-          <div className="input-group-prepend">
-            <button
-              className="btn btn-dark"
-              type="button"
-              onClick={handleClickSearch}
-            >
-              Search
-            </button>
+        <form>
+          <div className="d-flex flex-row justify-content-center">
+            <div className="d-flex flex-col">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter a city and search..."
+                aria-label="Search"
+                aria-describedby="basic-addon1"
+                autoComplete="off"
+                onChange={handleCityChange}
+              ></input>
+            </div>
+            <div className="d-flex flex-col">
+              <button className="btn" type="button" onClick={handleClickSearch}>
+                <FontAwesomeIcon icon={faSearchLocation} color="white" />
+              </button>
+            </div>
+            <div className="d-flex flex-col align-items-center">
+              or use your location
+              <button
+                className="btn"
+                type="button"
+                onClick={handleClickLocation}
+              >
+                <FontAwesomeIcon icon={faMapMarkerAlt} color="white" />
+              </button>
+            </div>
           </div>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search a city or use your location"
-            aria-label="Search"
-            aria-describedby="basic-addon1"
-            autoComplete="off"
-            onChange={handleCityChange}
-          ></input>
-          <div className="input-group-append">
-            <button
-              className="btn btn-dark"
-              type="button"
-              onClick={handleClickLocation}
-            >
-              Location
-            </button>
-          </div>
-        </div>
+        </form>
         <div>
-          <Current data={weatherData} />
-          <Forecast lat={weatherData.lat} lon={weatherData.lon} />
+          <Current data={weatherData} unit={unit} />
+          <Forecast lat={weatherData.lat} lon={weatherData.lon} unit={unit} />
+        </div>
+        <div className="d-flex flex-row justify-content-center align-items-center switch">
+          Switch units here:
+          <button className="btn" type="button" onClick={showCelcius}>
+            °C
+          </button>
+          <button className="btn" type="button" onClick={showFahrenheit}>
+            °F
+          </button>
         </div>
       </div>
     );
