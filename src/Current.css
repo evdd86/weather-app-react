@@ -24,7 +24,7 @@
   background-color: #33086715;
 }
 .Current img {
-  display: inline;
+  width: 250px;
 }
 @media screen and (max-width: 640px) {
   .Current .temp {
