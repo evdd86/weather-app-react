@@ -1,13 +1,17 @@
-.ForecastOutput {
-  font-size: 16px;
-}
-
-.ForecastOutput .icon {
-  width: 70px;
-}
-
-ul {
+.ForecastOutput ul {
   list-style: none;
   padding: 5px;
   margin: 0px;
+  font-size: 18px;
+}
+.ForecastOutput .icon {
+  width: 70px;
+}
+@media screen and (max-width: 640px) {
+  .ForecastOutput .icon {
+    width: 55px;
+  }
+  .ForecastOutput ul {
+    font-size: 15px;
+  }
 }

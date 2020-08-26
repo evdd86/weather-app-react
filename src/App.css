@@ -1,12 +1,30 @@
 .App {
-  font-family: sans-serif;
+  font-family: "Pompiere", sans-serif;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 20px;
   text-align: center;
   max-width: max-content;
   margin: 15px auto;
-
-  background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);
+  background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
 }
-
 .App .container {
   padding: 10px;
+  border: 1px solid #33086775;
+  border-radius: 15px;
+}
+.App footer {
+  margin: 10px 0 0 0;
+  font-size: 15px;
+}
+.App a {
+  color: rgba(216, 216, 29, 0.644);
+}
+@media screen and (max-width: 640px) {
+  .App {
+    font-size: 16px;
+  }
+  .App footer {
+    margin: 5px 0 0 0;
+    font-size: 11px;
+  }
 }

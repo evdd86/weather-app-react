@@ -1,0 +1,28 @@
+.SearchForm form {
+  margin: 0 0 15px 0;
+}
+.SearchForm .form-control {
+  border: 1px solid #33086775;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.75);
+  width: 200px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+}
+.SearchForm .btn {
+  border: 1px solid #33086775;
+  border-radius: 15px;
+  background-color: #33086715;
+  color: white;
+  width: 30px;
+  height: 44px;
+  padding: 5px;
+  margin: 5px;
+}
+.SearchForm .btn:hover {
+  background-color: #330867;
+}
+.SearchForm .switch {
+  margin: 5px 0 0 0;
+}

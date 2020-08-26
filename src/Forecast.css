@@ -1,3 +1,6 @@
 .Forecast {
   margin: 10px 0;
+  border: 1px solid #33086775;
+  border-radius: 15px;
+  background-color: #33086715;
 }

@@ -1,65 +1,33 @@
-.Current .col-7 {
-  padding: 5px;
-}
-.Current .col-5 {
-  padding: 5px;
-  background-color: transparent;
-}
-
 .Current .city {
-  font-size: 25px;
-  color: green;
-  text-align: left;
+  font-size: 50px;
   text-transform: uppercase;
-}
-.Current .date {
-  font-size: 14px;
-  color: green;
-  text-align: left;
 }
 .Current .temp {
-  font-size: 80px;
-  color: green;
-  text-align: right;
-}
-.Current .feel {
-  font-size: 14px;
-  color: green;
-  text-align: right;
-}
-.Current .tempminmax {
-  font-size: 14px;
-  color: green;
-  text-align: right;
+  font-size: 110px;
 }
 .Current .conditions {
-  font-size: 14px;
-  color: green;
-  text-align: right;
-  text-transform: uppercase;
-}
-.Current .icon {
-  display: inline;
+  text-align: left;
+  padding: 0;
 }
 .Current .description {
-  font-size: 14px;
-  color: green;
-  text-align: right;
   text-transform: capitalize;
 }
-.Current .windspeed {
-  font-size: 14px;
-  color: green;
-  text-align: right;
-}
-.Current .humidity {
-  font-size: 14px;
-  color: green;
-  text-align: right;
-}
 .Current .time {
-  font-size: 14px;
-  font-style: italic;
-  color: green;
-  text-align: right;
+  margin: 5px 0 0 0;
+}
+.Current .current-data {
+  border: 1px solid #33086775;
+  border-radius: 15px;
+  background-color: #33086715;
+}
+.Current .list-group-item {
+  background-color: #33086715;
+}
+.Current img {
+  display: inline;
+}
+@media screen and (max-width: 640px) {
+  .Current .temp {
+    font-size: 90px;
+  }
 }
