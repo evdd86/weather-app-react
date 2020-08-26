@@ -28,12 +28,29 @@ export default function Forecast(props) {
   ) {
     return (
       <div className="Forecast">
-        <div className="d-flex flex-col border border-dark">
-          <ForecastOutput output={forecastData.info.daily[1]} />
-          <ForecastOutput output={forecastData.info.daily[2]} />
-          <ForecastOutput output={forecastData.info.daily[3]} />
-          <ForecastOutput output={forecastData.info.daily[4]} />
-          <ForecastOutput output={forecastData.info.daily[5]} />
+        <div className="d-flex flex-row justify-content-center align-items-center">
+          <div className="d-flex flex-col">
+            <ForecastOutput
+              output={forecastData.info.daily[1]}
+              unit={props.unit}
+            />
+            <ForecastOutput
+              output={forecastData.info.daily[2]}
+              unit={props.unit}
+            />
+            <ForecastOutput
+              output={forecastData.info.daily[3]}
+              unit={props.unit}
+            />
+            <ForecastOutput
+              output={forecastData.info.daily[4]}
+              unit={props.unit}
+            />
+            <ForecastOutput
+              output={forecastData.info.daily[5]}
+              unit={props.unit}
+            />
+          </div>
         </div>
       </div>
     );
