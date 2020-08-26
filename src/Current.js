@@ -3,70 +3,90 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowCircleDown,
   faArrowCircleUp,
-  faWind,
-  faTint,
 } from "@fortawesome/free-solid-svg-icons";
 import FormattedDate from "./FormattedDate";
 import FormattedTime from "./FormattedTime";
+import WeatherIcon from "./WeatherIcon";
 import "./Current.css";
 
-import CloudsNightImage from "./CloudsNight.jpg";
-import { Container } from "react-bootstrap";
-
 export default function Current(props) {
-  function showForecastIcon() {
-    let icon = props.data.iconUrl;
-    let description = props.data.description;
-    return (
-      <img className="icon" src={icon} alt={description} width="115"></img>
-    );
+  function convertTemperature() {
+    let temp = props.data.temperature;
+    if (props.unit === "°C") {
+      return temp;
+    } else {
+      return (temp * 9) / 5 + 32;
+    }
+  }
+
+  function feelTemp() {
+    let feel = props.data.feel;
+    if (props.unit === "°C") {
+      return feel;
+    } else {
+      return (feel * 9) / 5 + 32;
+    }
+  }
+
+  function convertMinTemp() {
+    let mintemp = props.data.mintemp;
+    if (props.unit === "°C") {
+      return mintemp;
+    } else {
+      return (mintemp * 9) / 5 + 32;
+    }
+  }
+
+  function convertMaxTemp() {
+    let maxtemp = props.data.maxtemp;
+    if (props.unit === "°C") {
+      return maxtemp;
+    } else {
+      return (maxtemp * 9) / 5 + 32;
+    }
   }
 
   return (
     <div className="Current">
-      <div className="d-flex flex-row border border-dark">
-        <div
-          className="col-7 col-left"
-          style={{
-            backgroundImage: `url(${CloudsNightImage})`,
-            backgroundSize: "contain",
-          }}
-        >
-          <div className="flex-row city">{props.data.city}</div>
-          <div className="flex-row date">
-            <FormattedDate date={props.data.date} />
-          </div>
-          <div className="flex-row temp">
-            {Math.round(props.data.temperature)}°
-          </div>
-          <div className="flex-row feel">
-            Feels like {Math.round(props.data.feel)}°
-          </div>
-          <div className="flex-row tempminmax">
-            <FontAwesomeIcon icon={faArrowCircleDown} color="green" />{" "}
-            {Math.round(props.data.mintemp)}°{" "}
-            <FontAwesomeIcon icon={faArrowCircleUp} color="green" />{" "}
-            {Math.round(props.data.maxtemp)}°
-          </div>
+      <div className="d-flex flex-row justify-content-center city">
+        {props.data.city}
+      </div>
+      <div className="d-flex flex-row justify-content-center date">
+        <FormattedDate date={props.data.date} />
+      </div>
+      <div className="d-flex flex-row justify-content-center icon">
+        <WeatherIcon
+          icon={props.data.icon}
+          description={props.data.description}
+        />
+      </div>
+      <div className="d-flex flex-row align-items-center current-data">
+        <div className="col-6 temp">{Math.round(convertTemperature())}°</div>
+        <div className="col-6 conditions">
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item description ">
+              {props.data.description}
+            </li>
+            <li className="list-group-item feel">
+              Feels like {Math.round(feelTemp())}°
+            </li>
+            <li className="list-group-item humidity">
+              Humidity: {Math.round(props.data.humidity)}%
+            </li>
+            <li className="list-group-item windspeed">
+              Windspeed: {Math.round(props.data.windspeed)} KM/H
+            </li>
+            <li className="list-group-item tempminmax">
+              <FontAwesomeIcon icon={faArrowCircleDown} color="white" />{" "}
+              {Math.round(convertMinTemp())}°{" "}
+              <FontAwesomeIcon icon={faArrowCircleUp} color="white" />{" "}
+              {Math.round(convertMaxTemp())}°
+            </li>
+          </ul>
         </div>
-        <div className="col-5 col-right">
-          <div className="flex-row conditions">Currently</div>
-          <div className="flex-row icon justify-content-center">
-            {showForecastIcon()}
-          </div>
-          <div className="flex-row description">{props.data.description}</div>
-          <div className="flex-row windspeed">
-            <FontAwesomeIcon icon={faWind} color="green" />{" "}
-            {Math.round(props.data.windspeed)} KM/H
-          </div>
-          <div className="flex-row humidity">
-            <FontAwesomeIcon icon={faTint} color="green" />{" "}
-            {Math.round(props.data.humidity)}%
-          </div>
-          <div className="flex-row time">
-            <FormattedTime time={props.data.date} />
-          </div>
-        </div>
+      </div>
+      <div className="d-flex flex-row justify-content-center time">
+        <FormattedTime time={props.data.date} />
       </div>
     </div>
   );

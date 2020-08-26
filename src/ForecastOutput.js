@@ -5,6 +5,7 @@ import {
   faArrowCircleUp,
   faTint,
 } from "@fortawesome/free-solid-svg-icons";
+import WeatherIcon from "./WeatherIcon";
 import "./ForecastOutput.css";
 
 export default function ForecastOutput(props) {
@@ -15,42 +16,49 @@ export default function ForecastOutput(props) {
     return `${day}`;
   }
 
-  function showForecastMinTemp() {
-    let minTemp = Math.round(props.output.temp.min);
-    return `${minTemp}`;
-  }
-
-  function showForecastMaxTemp() {
-    let maxTemp = Math.round(props.output.temp.max);
-    return `${maxTemp}`;
-  }
-
   function showForecastHumidity() {
     let humidity = Math.round(props.output.humidity);
     return `${humidity}`;
   }
 
-  function showForecastIcon() {
-    let icon = `http://openweathermap.org/img/wn/${props.output.weather[0].icon}@2x.png`;
-    let description = props.output.weather[0].description;
-    return <img className="icon" src={icon} alt={description}></img>;
+  function convertMinTemp() {
+    let mintemp = props.output.temp.min;
+    if (props.unit === "°C") {
+      return mintemp;
+    } else {
+      return (mintemp * 9) / 5 + 32;
+    }
+  }
+
+  function convertMaxTemp() {
+    let maxtemp = props.output.temp.max;
+    if (props.unit === "°C") {
+      return maxtemp;
+    } else {
+      return (maxtemp * 9) / 5 + 32;
+    }
   }
 
   return (
     <div className="ForecastOutput">
       <ul>
         <li>{showForecastDay()}</li>
-        <li>{showForecastIcon()}</li>
         <li>
-          <FontAwesomeIcon icon={faArrowCircleDown} color="green" />{" "}
-          {showForecastMinTemp()}°
+          <WeatherIcon
+            icon={props.output.weather[0].icon}
+            description={props.output.weather[0].description}
+          />
         </li>
         <li>
-          <FontAwesomeIcon icon={faArrowCircleUp} color="green" />{" "}
-          {showForecastMaxTemp()}°
+          <FontAwesomeIcon icon={faArrowCircleDown} color="white" />{" "}
+          {Math.round(convertMinTemp())}°
         </li>
         <li>
-          <FontAwesomeIcon icon={faTint} color="green" />{" "}
+          <FontAwesomeIcon icon={faArrowCircleUp} color="white" />{" "}
+          {Math.round(convertMaxTemp())}°
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faTint} color="white" />{" "}
           {showForecastHumidity()}%
         </li>
       </ul>
